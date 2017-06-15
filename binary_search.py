@@ -53,3 +53,18 @@ class BinarySearch(list):
         if val not in self:
             found = True
             value_index = -1
+
+        # binary search algorithm using a while loop
+        while first <= last and not found:
+            mid = (first + last) // 2
+            if self[mid] == val:
+                found = True
+                value_index = mid
+            else:
+                counter += 1  # update counter when an interaction occurs
+                if val < self[mid]:
+                    last = mid - 1
+                else:
+                    first = mid + 1
+
+        return {'count': counter, 'index': value_index}
